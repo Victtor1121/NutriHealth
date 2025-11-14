@@ -1,0 +1,82 @@
+[2025-09-19T21:08:59+02:00] METHOD: POST CONTENT_LENGTH: 2086
+POST:
+Array
+(
+    [nome] => joao
+    [email] => luizgabriel8263@gmail.com
+    [cpf] => 508.858.178-50
+    [telefone] => (12) 31231-3213
+    [cargo] => Personal
+    [senha] => 123123
+    [confirmar_senha] => 123123
+    [crn] => 
+    [tipo_trabalho] => Autonomo
+    [tipo_atendimento] => 
+    [tipo_empresa] => 
+    [nome_local] => 
+    [cep] => 
+    [estado] => 
+    [endereco] => 
+    [cidade] => 
+    [telefone_local] => 
+    [cnpj] => 
+    [bio] => afsadasdasdadada
+)
+
+FILES:
+Array
+(
+    [foto] => Array
+        (
+            [name] => 
+            [full_path] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+        )
+
+)
+
+
+[2025-09-19T21:11:23+02:00] METHOD: POST CONTENT_LENGTH: 2209
+POST:
+Array
+(
+    [nome] => joao
+    [email] => luiz.yaginuma@etec.sp.gov.br
+    [cpf] => 508.858.178-50
+    [telefone] => (12) 31231-3213
+    [cargo] => Nutricionista
+    [senha] => 123123123
+    [confirmar_senha] => 123123123
+    [crn] => 12321-3
+    [tipo_trabalho] => Empresa
+    [tipo_atendimento] => Presencial
+    [tipo_empresa] => MEI
+    [nome_local] => dsadasda
+    [cep] => 19905-325
+    [estado] => SP
+    [endereco] => Rua Engenheiro José Roberto Vito
+    [cidade] => Ourinhos
+    [telefone_local] => (13) 21312-3131
+    [cnpj] => 31.123.123/2132-32
+    [bio] => 1232131321321
+)
+
+FILES:
+Array
+(
+    [foto] => Array
+        (
+            [name] => 
+            [full_path] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+        )
+
+)
+
+
