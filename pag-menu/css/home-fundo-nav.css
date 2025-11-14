@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins: 200, 300, 400, 500, 600, 700, 800, 900&display=swap');
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #009e60 transparent;
+  }
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+body{
+    background: url("../src/1a3d7d75-be5a-4fe0-ad79-fbc9ca05f3ce.jpg");
+    background-size: cover;
+    background-position: center;
+    padding-top: 1px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+header{
+    position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.6s;
+      padding: 20px 10%;
+      z-index: 1000000;
+      background-color: #fff;
+}
+header.sticky{
+    padding: 10px 5%;
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+header .logo{
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+}
+
+header .logo img{
+    max-height: 100px;
+}
+header ul{
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+}
+header ul li{
+    position: relative;
+    list-style: none;
+}
+header ul li a{
+    text-decoration: none;
+    color: #000;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.banner{
+    height: 100vh;
+    background-image: url('../../src/images/banner.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header.sticky .logo,
+header.sticky ul li a{
+    color: #000;
+}
+header ul li a::before,
+header ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 1px;
+    background-color: #000;
+    transition: width 0.35s ease-in-out;
+    opacity: 0;
+}
+
+header ul li a::before {
+    top: 0;
+    height: 1px;
+}
+
+header ul li a::after {
+    bottom: 0;
+}
+
+header ul li a:hover {
+    letter-spacing: 3px;
+}
+
+header ul li a:hover::before,
+header ul li a:hover::after {
+    width: 120%;
+    opacity: 1;
+}
+header.sticky ul li a::before,
+header.sticky ul li a::after {
+    background-color: #000;
+    height: 1.5px;
+}
+header.sticky ul li a::before {
+    top: 0;
+    height: 1.5px;
+}

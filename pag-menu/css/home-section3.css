@@ -1,0 +1,220 @@
+.separator-wave {
+    overflow: hidden;      /* evita que o SVG “vaze” pra cima/baixo */
+    line-height: 0;        /* remove gap de linha */
+    background-color: #f5fbff;
+    margin-bottom: -1px;
+  }
+  
+  /* 2) SVG 100% width, margem negativa pra “colar” bem no topo do audience */
+  .separator-wave__svg {
+    display: block;
+    width: 100%;
+    margin-top: -1px;      /* elimina pixel de corte */
+  }
+  
+  /* 3) Garante que o audience fique acima do separador (caso haja stacking) */
+  .audience {
+    position: relative;
+    z-index: 1;
+  }
+:root {
+    --aud-color-primary: #00c37a;
+    --aud-color-text: #222;
+    --aud-color-muted: #555;
+    --aud-font-heading: 'Poppins', sans-serif;
+    --aud-font-body: 'Inter', sans-serif;
+  }
+  /* responsivo: vale mais raso em telas pequenas */
+  @media (max-width: 768px) {
+    .wave-separator-alt {
+      height: 50px;
+    }
+  }
+  
+
+  .audience {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 5%;
+    min-height: 100vh;
+    background-color: #98f0b8;
+  }
+  
+  /* Texto e listas */
+  .audience-text {
+    flex: 1;
+    max-width: 600px;
+  }
+  
+  .audience-text h2 {
+    font-family: var(--aud-font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--aud-color-text);
+    margin-bottom: 1.5rem;
+  }
+  
+  .audience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /*.audience-list > li {
+    font-family: var(--aud-font-body);
+    font-size: 1.1rem;
+    color: var(--aud-color-text);
+    margin-bottom: 2rem;
+    position: relative;
+    padding-left: 2.5rem;
+    border-radius: 10px;
+    
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .audience-list > li i {
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    font-size: 1.5rem;
+    color: var(--aud-color-primary);
+  }
+  
+  /* Bullet points internos */
+  /*
+  .benefits-list {
+    list-style: none;
+    padding: 0 0 0 1.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .benefits-list li {
+    position: relative;
+    padding-left: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--aud-color-muted);
+    line-height: 1.5;
+  }
+  .benefits-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.35rem;
+    width: 0.65rem;
+    height: 0.65rem;
+    background-color: var(--aud-color-primary);
+    border-radius: 50%;
+  }
+  */
+  .card-info {
+  width: 88%;
+  height: 250px;
+  margin: 1rem auto;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: .2s all;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card-info:hover .card-inner {
+  transform: rotateY(180deg);
+  
+}
+.card-info:hover{
+  transform: scale(1.05);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.card-front {
+  background: white;
+  border: 1px solid #33333377;
+
+}
+.card-front img{
+  max-width: 350px;
+}
+.card-back img{
+  max-width: 350px;
+}
+
+.card-back {
+  background: white;
+  border: 1px solid #33333377;
+  color: white;
+  transform: rotateY(180deg);
+} 
+  /* Imagem com mockup animado */
+  .audience-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .audience-img img {
+    max-height: 80vh;
+    border-radius: 12px;
+    animation: float 2s ease-in-out infinite;
+  }
+  
+  /* Animação “float” */
+  @keyframes float {
+    0%, 100%   { transform: translateY(0); }
+    50%        { transform: translateY(-8px); }
+  }
+  
+  /* Scroll-reveal (IntersectionObserver) */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 992px) {
+    .audience {
+      flex-direction: column;
+      text-align: center;
+      min-height: auto;
+      padding: 3rem 5%;
+    }
+    .audience-list > li {
+      padding-left: 0;
+    }
+    .audience-list > li i {
+      position: static;
+      margin-right: 0.5rem;
+    }
+    .benefits-list {
+      padding-left: 0;
+    }
+    .audience-img img {
+      width: 80%;
+      max-height: none;
+      margin-top: 2rem;
+    }
+  }
+  /* 1. Prepara o LI como “cartão” e limpa overflow */

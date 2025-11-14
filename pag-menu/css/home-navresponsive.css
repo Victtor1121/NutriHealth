@@ -1,0 +1,63 @@
+  /* Esconde botão hamburguer no desktop */
+  .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #000;
+      z-index: 10001;
+  }
+
+  .nav-links {
+      display: flex;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1024px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .btn-login {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+  }
+
+      .nav-links {
+        position: fixed;
+    top: 65px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: #fff;
+    flex-direction: column;
+    justify-content: flex-start;   /* começa do topo */
+    align-items: center;
+    gap: 30px;
+    overflow-y: auto;             /* permite scroll */
+    padding: 40px 0;              /* espaço no topo/baixo */
+    transition: right 0.3s ease-in-out;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links li a {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Ajuste extra para telas muito pequenas */
+    @media (max-width: 480px) {
+      header .logo {
+      font-size: 1.4em;
+      }
+
+      .menu-toggle {
+        font-size: 1.8rem;
+      }
+
+      .nav-links li a {
+        font-size: 1rem;
+      }
+    }

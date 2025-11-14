@@ -1,0 +1,628 @@
+.footer {
+  background-color: #1a1a1a;
+  color: #d1d1d1;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  position: relative; /* garante que não “suba” na tela */
+  z-index: 1; /* abaixo do modal */
+}
+/* ---------- Overlay Modal ---------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow-y: auto; 
+}
+
+.modal.hidden {
+  display: none;
+}
+
+/* ---------- Conteúdo em Grid ---------- */
+.grid-modal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 80%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
+  max-height: 90vh;       /* limita altura a 90% da viewport */
+  overflow-y: auto;       /* ativa scroll vertical no conteúdo */
+  overflow-x: hidden;     /* oculta scroll horizontal */
+  margin: 16px;           /* espaço ao redor em telas pequenas */
+
+}
+
+/* ---------- Imagem ---------- */
+.modal-image {
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ---------- Formulário ---------- */
+.modal-form {
+  padding: 40px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+/* aplica animação ao abrir */
+.modal.hide .grid-modal {
+  animation: modalFadeOut 0.3s ease forwards;
+}
+.modal.show .grid-modal {
+  animation: modalFadeIn 0.3s ease forwards;
+}
+/* Botão fechar */
+.close-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+.close-modal:hover {
+  color: #ec0c0c;
+}
+
+.modal-form h2 {
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Inputs */
+#login-form {
+  display: grid;
+  gap: 16px;
+}
+
+#login-form input {
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: .2s all;
+}
+#login-form input:focus {
+  border-color: #3B885C;
+  box-shadow: 0 0 6px rgba(59, 136, 92, 0.3);
+  outline: none;
+  transform: scale(1.05)
+}
+
+/* Botão Entrar */
+#login-form .btn-logar:disabled {
+  background: #ccc;
+  color: #666;
+  transition: background 0.3s, color 0.3s;
+}
+#login-form .btn-logar{
+  background: #2ecc71;
+  color: #fff;
+  padding: 14px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+transition: .2s all;
+position: relative;
+}
+#login-form .btn-logar:not(:disabled):hover {
+  background: #27ae60;
+  text-transform: uppercase;
+}
+
+/* Tooltip de texto */
+#login-form .btn-logar:disabled:hover::after {
+  content: "Preencha e-mail e senha para entrar!";
+  position: absolute;
+  bottom: -55%;                /* acima do botão */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  pointer-events: none;        /* evita bloquear o hover */
+  opacity: 1;
+}
+
+/* Setinha do tooltip */
+#login-form .btn-logar:disabled:hover::before {
+  content: "";
+  position: absolute;
+  bottom: calc(0% - 0px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+}
+/* Texto do rodapé do modal */
+.modal-footer-text {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.modal-footer-text a {
+  color: #2ecc71;
+  text-decoration: none;
+  font-weight: 600;
+}
+.modal-footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Responsividade ---------- */
+@media (max-width: 768px) {
+  .grid-modal {
+    width: 95%;                  /* ocupa quase toda a largura */
+    grid-template-columns: 1fr;  /* coluna única */
+    max-height: 100vh;           /* altura total da viewport */
+  }
+
+  .modal-form {
+    padding: 24px 16px;          /* menos padding lateral */
+  }
+
+  .modal-image {
+    display: none;               /* esconde imagem para ganhar espaço */
+  }
+}
+
+
+/* Botão Logar */
+.btn-login {
+  padding: 5px 16px;
+  background: #2ecc71;
+  color: #fff !important;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  color: rgb(0, 132, 255);
+  border-radius: 100%;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease, opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none; /* começa invisível */
+}
+.top-btn i{
+  font-size: 50px;
+}
+
+.top-btn:hover {
+  transform: scale(1.1);
+}
+
+.top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+  .hidden {
+    display: none;
+  }
+
+.btn-login:hover {
+  background: #27ae60;
+  letter-spacing: 0px;
+  box-shadow: 0 0px 12px rgba(0, 0, 0, 0.288);
+  transition: all 0.3s;
+}
+.btn-login::before,
+.btn-login::after {
+  content: none !important;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+  }
+  .footer-section {
+    flex: 1 1 250px;
+  }
+  
+  .footer-section h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #ffffff;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section a {
+    color: #d1d1d1;
+    
+    transition: color 0.3s;
+  }
+  
+  .footer-section a:hover {
+    color: #ffffff;
+  }
+  .botao-rs{
+    padding:1em;
+    border-radius:100vw;
+    display:inline-flex;
+    margin:0.5em;
+    color:#ffffff;
+    width:auto;
+}
+.botao-rs a { 
+    text-decoration:none; 
+    color:#fff; 
+    display: inherit;
+}
+.instagram{   
+  background:hsl(0 0% 10%);
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+.whatsapp{
+  background:#15cc31;
+}
+.email{
+  background:#e60023;
+}
+.botao-rs:hover{
+  cursor:pointer;
+}
+.botao-rs i { 
+    width: 25px;
+    height: 25px;
+    line-height: 31px;
+    font-size: 1.5em;
+}
+.botao-rs span{
+  display:inline-block;
+  white-space: nowrap;
+  width:0px;
+
+  overflow:hidden;
+  transition:350ms ease;
+  
+}
+.botao-rs:hover span{
+  width:80px;
+  margin-left: 10px;
+}
+  .footer-bottom {
+    width: 100%;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+
+  /* 2) Centraliza o conteúdo em um flex container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 3) Mantém a tipografia original */
+  font-size: 13px;
+  color: #888;
+  }
+
+
+
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5% 5%;
+    margin-top: 7%;
+    gap: 40px;
+  }
+  .hero-text {
+    flex: 1;
+    max-width: 600px;
+  }
+    /* Coluna de texto */
+    .hero-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .hero-text h1 span {
+      color: #ff4081;
+    }
+    
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+    .hero-img {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    }
+    .hero-img img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .btn {
+  margin: 20px auto;
+  border: none;
+  padding: 10px 44px;
+  font-size: 36px;
+  position: relative;
+  cursor: pointer;
+}
+.btn::before {
+  transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  content: "";
+  width: 50%;
+  height: 100%;
+  background: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.btn:hover::before {
+  background: black;
+  width: 100%;
+}
+.btn.rounded {
+  border-radius: 50px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.534);
+}
+.btn.rounded .text-green {
+  color: #00F0B5;
+  mix-blend-mode: difference;
+  
+}
+.btn.rounded::before {
+  border-radius: 50px;
+  width: 25%;
+
+  background: #00F0B5;
+}
+.btn.rounded:hover::before {
+  background: #00F0B5;
+  width: 100%;
+
+}
+  
+
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .hero {
+        flex-direction: column; /* Coluna única para telas menores */
+        text-align: center;
+        padding: 40px 5%;
+      }
+    
+      .hero-text {
+        margin-bottom: 40px;
+      }
+    
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+    
+      .hero-text p {
+        font-size: 1rem;
+      }
+    
+      .hero-img img {
+        width: 80%;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column; /* Ajuste em telas menores */
+        gap: 30px;
+      }
+    }
+    main {
+      flex: 1;
+      background: linear-gradient(180deg, #ffffff, #7bf4a8, #30fc7b);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      max-height: 120vh;
+      position: relative;
+      overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #7bf4a8 60%,
+    #30fc7b 100%
+  );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* Asegura que o conteúdo seja empilhado corretamente */
+      min-height: 100vh;
+    }
+
+    .wave-separator {
+      display: block;
+      width: 100%;
+      height: 120px;        /* controla “a altura” da curva */
+      margin-top: -1px; 
+      background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #7bf4a8 60%,
+    #30fc7b 100%
+  );   /* elimina qualquer gap */
+  transform: rotate(180deg);
+    }
+    
+    /* Se quiser ajustar responsividade: */
+    @media (max-width: 768px) {
+      .wave-separator {
+        height: 60px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+  .hero-text h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Tablets e telas médias (entre 768px e 1200px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.4rem;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 768px) {
+  nav header .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    font-size: 24px;
+    padding: 10px 30px;
+  }
+
+  .btn.rounded .text-green {
+    font-size: 1rem;
+  }
+
+  .footer-container {
+    padding: 20px;
+  }
+}
+
+/* Celulares muito pequenos (até 480px) */
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    font-size: 18px;
+    padding: 8px 20px;
+  }
+
+  .btn.rounded .text-green {
+    font-size: 0.9rem;
+  }
+
+  .footer-section h2 {
+    font-size: 16px;
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 13px;
+  }
+
+  .botao-rs span {
+    display: none;
+  }
+  .modal-form h2 {
+    font-size: 1.2rem;
+  }
+
+  #login-form input,
+  #login-form .btn-login {
+    font-size: 0.9rem;
+    padding: 12px 14px;
+  }
+
+  .close-modal {
+    top: 8px;
+    right: 8px;
+    font-size: 1.25rem;
+  }
+}
