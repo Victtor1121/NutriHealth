@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/x-icon" href="src/icons/fav.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <title>NutriHealth - Registro</title>
+  <link rel="stylesheet" href="pag-menu/css/home-navresponsive.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+  <header>
+    <a href="#" class="logo">NutriHealth</a>
+    <div class="menu-toggle" id="menu-toggle">
+        ☰
+    </div>
+    <ul class="nav-links">
+        <li><a href="pag-menu/home.html" class="nav-a">Inicio</a></li>
+        <li><a href="#" class="nav-a">About</a></li>
+        <li><a href="#" class="nav-a">Service</a></li>
+        <li><a href="#" class="nav-a">Portifolio</a></li>
+        <li><a href="#" class="nav-a">Team</a></li>
+        <li><a href="#" class="nav-a">Contact</a></li>
+    </ul>
+</header>
+</nav>
+    <a href="#typing-title" class="scroll-btn" id="scrollBtn">Resgistre-se</a>
+    <a href="#" class="top-btn" id="topBtn"><i class="bi bi-arrow-up-circle-fill"></i></a>
+
+  <section class="parallax parallax1">
+    
+  </section>
+
+  <section class="content-section animate-left">
+    <div class="objects">
+        <ul><img src="src/icons/leaf.png" alt="leafs">
+            <p>Coma mais alimentos naturais e menos industrializados. Saúde começa no prato!</p>
+        </ul>
+        <ul><img src="src/icons/man-run.png" alt="man-running">
+            <p>Movimente-se todos os dias. Seu corpo e sua mente agradecem!</p>
+        </ul>
+        <ul><img src="src/icons/balance_.png" alt="balance">
+            <p>Emagrecer é um processo. Com equilíbrio e foco, você chega lá!</p>
+        </ul>
+    </div>
+  </section>
+
+
+
+  <section class="content-section animate-right">
+    <div class="objets-overlay2">
+        <div class="">
+            <section class="section-cards">
+                <div class="left">
+                  <div class="card">
+                    <div class="card-image">
+                        <img src="src/images/card-food.png" alt="icon food" />
+                    </div>
+                  <div>
+                    <p>Dicas de Nutrição</p>
+                  </div>
+                  </div>
+              
+                  <div class="card">
+            <div class="card-image">
+                <img src="src/images/card-exerc.png" alt="icon training" />
+            </div>
+            <div>
+                <p>Planos de Exercício</p>
+            </div>
+        </div>
+              
+                  <div class="card">
+            <div class="card-image">
+                <img src="src/images/card-balance.png" alt="icon balance" />
+            </div>
+            <div>
+                <p>Controle de Peso</p>
+            </div>
+        </div>
+                </div>
+              
+                <div class="right">
+                  <div class="image-banner">
+                    <img src="src/images/image.png" alt="NutriHealth Banner" />
+                    
+                  </div>
+                </div>
+              </section>
+        </div>
+    </div>
+  </section>
+
+  <section class="parallax parallax3">
+    <img src="src/images/slogaN.png" alt="Slogan NutriHealth" class="slogan-img-outside" />
+    <div class="overlay login-options">
+      <h1 class="login-title" id="typing-title"></h1>
+      <div class="login-buttons animate-bottom">
+        <button onclick="abrirRegistro()" class="login-btn registrar">Registrar</button>
+        </div>
+    </div>
+  </section>
+  
+  <div id="modal-login" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-btn" onclick="fecharModal()">&times;</span>
+    <h2 id="tipo-usuario"></h2>
+    
+    <div class="progress-bar-container">
+      <div class="progress-step active" id="step-1">
+        <div class="step-circle">
+          <span class="step-number">1</span>
+          <svg class="step-icon" viewBox="0 0 24 24" role="img" aria-label="Concluído">
+            <path fill="currentColor"
+              d="M20.285 6.708l-11.39 11.39l-5.18-5.18l1.414-1.414l3.766 3.766l9.976-9.976z" />
+          </svg>
+        </div>
+        <p>Pessoal</p>
+      </div>
+      <div class="progress-step" id="step-2">
+        <div class="step-circle">
+          <span class="step-number">2</span>
+          <svg class="step-icon" viewBox="0 0 24 24" role="img" aria-label="Concluído">
+            <path fill="currentColor"
+              d="M20.285 6.708l-11.39 11.39l-5.18-5.18l1.414-1.414l3.766 3.766l9.976-9.976z" />
+          </svg>
+        </div>
+        <p> Profissional</p>
+      </div>
+      <div class="progress-step" id="step-3">
+        <div class="step-circle">3</div>
+        <p>Confirmação</p>
+      </div>
+    </div>
+<form action="processa_registro.php" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+  <!-- ETAPA 1 – Dados pessoais -->
+  <div id="etapa-1">
+    <input type="text" id="nome" name="nome" placeholder="Nome completo" required />
+
+    <input type="email" id="email" name="email" placeholder="Email" required />
+    <span class="error-message" id="email-error"></span>
+
+    <input type="text" id="cpf" name="cpf" placeholder="CPF" maxlength="14" required />
+    <span class="error-message" id="cpf-error"></span>
+
+    <input type="text" id="telefone" name="telefone" placeholder="Telefone" maxlength="15" required />
+    <span class="error-message" id="telefone-error"></span>
+
+    <select id="cargo" name="cargo" onchange="atualizarCargo()" required>
+      <option value="">Selecione sua Função</option>
+      <option value="Nutricionista">Nutricionista</option>
+      <option value="Personal">Personal</option>
+    </select>
+
+    <div class="senha-container">
+      <input type="password" id="senha" name="senha" placeholder="Senha" required />
+      <span class="toggle-senha" onclick="toggleSenha('senha')">👁</span>
+    </div>
+
+    <div class="senha-container">
+      <!-- mantenha o name em snake_case para combinar com o PHP -->
+      <input type="password" id="confirmar-senha" name="confirmar_senha" placeholder="Confirmar senha" required />
+      <span class="toggle-senha" onclick="toggleSenha('confirmar-senha')">👁</span>
+    </div>
+    <span class="error-message" id="confirmar-senha-error"></span>
+
+    <label for="foto" class="custom-file-upload">Foto de perfil (opcional):</label>
+    <input type="file" id="foto" name="foto" accept="image/*" />
+    <p id="file-name">Nenhum arquivo selecionado</p>
+
+    <div id="campo-crn" class="hidden">
+      <input type="text" id="crn" name="crn" placeholder="CRN do Nutricionista" />
+      <span class="error-message" id="crn-error"></span>
+    </div>
+
+    <div class="section-Entrar">
+      <button type="button" onclick="proximaEtapa()">Próxima Etapa</button>
+    </div>
+  </div>
+
+  <!-- ETAPA 2 – Informações profissionais -->
+  <div id="etapa-2" class="hidden">
+    <div id="campo-trabalho" class="hidden">
+      <label>Você atua como:</label>
+      <select id="tipo-trabalho" name="tipo_trabalho" onchange="atualizarTrabalho()">
+        <option value="">Selecione</option>
+        <option value="Autonomo">Autônomo</option>
+        <option value="Empresa">Empresa</option>
+      </select>
+    </div>
+
+    <div id="campos-empresa" class="hidden">
+      <select id="tipo-atendimento" name="tipo_atendimento">
+        <option value="">Tipo de Atendimento</option>
+        <option value="Online">Online</option>
+        <option value="Presencial">Presencial</option>
+        <option value="Ambos">Ambos</option>
+      </select>
+
+      <select id="tipo-empresa" name="tipo_empresa">
+        <option value="">Tipo de Empresa</option>
+        <option value="MEI">MEI</option>
+        <option value="PJ">PJ</option>
+      </select>
+
+      <input type="text" id="nome-local" name="nome_local" placeholder="Nome do Local" />
+      <input type="text" id="cep" name="cep" placeholder="CEP" />
+      <input type="text" id="estado" name="estado" placeholder="Estado" />
+      <input type="text" id="endereco" name="endereco" placeholder="Endereço" />
+      <input type="text" id="cidade" name="cidade" placeholder="Cidade" />
+      <input type="text" id="telefone-local" name="telefone_local" placeholder="Telefone do Local" maxlength="15" />
+      <input type="text" id="cnpj" name="cnpj" placeholder="CNPJ" />
+    </div>
+
+    <textarea id="bio" name="bio" placeholder="Bio / Apresentação"></textarea>
+
+    <div class="section-Entrar">
+      <button type="button" onclick="finalizarRegistro()">Finalizar</button>
+    </div>
+  </div>
+
+  <!-- ETAPA 3 – Revisão e envio -->
+  <div id="etapa-3" class="hidden">
+    <h3>Revise suas informações</h3>
+    <div id="review-content"></div>
+    <div class="section-Entrar">
+      <button type="submit" id="btn-enviar">Enviar</button>
+    </div>
+    <p id="mensagem-final" class="mensagem"></p>
+  </div>
+</form>
+
+
+
+    <p id="mensagem-login" class="mensagem"></p>
+    <div id="modal-confirmacao" class="modal hidden">
+  <div class="modal-content modal-confirm">
+    <h3>Tem certeza que deseja fechar?</h3>
+    <p>Os dados preenchidos serão perdidos.</p>
+    <div class="confirm-buttons">
+      <button class="btn-sim" onclick="confirmarFechamento(true)">Sim</button>
+      <button class="btn-nao" onclick="confirmarFechamento(false)">Não</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+  
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h2>Sobre o Projeto</h2>
+        <p>
+          Adicione aqui uma descrição do projeto, seus objetivos ou qualquer outra informação relevante.
+        </p>
+      </div>
+      <div class="footer-section">
+        <h2>Links Úteis</h2>
+        <ul>
+          <li><a href="#">Documentação</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h2>Fale Conosco</h2>
+          <div class="botao-rs instagram">
+              
+              <a href="#" title="Instagram">    
+                 <i class="bi bi-instagram"></i>
+                 <span>Instagram</span>
+              </a>
+          </div>
+          <div class="botao-rs email">
+              <a href="#" title="E-mail">
+                  <i class="bi bi-envelope"></i>
+                  <span>E-mail</span>
+              </a>
+          
+          </div>
+          <div class="botao-rs whatsapp">
+              
+              <a href="#" title="whatsApp">    
+                  <i class="bi bi-whatsapp"></i>
+                  <span>WhatsApp</span>
+              </a>
+          
+          </div>
+
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      © 2025 NutriHealth. Todos os direitos reservados.
+    </div>
+  </footer>
+  <div
+  id="user-success-dialog"
+  class="user-success-dialog"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="user-success-title"
+>
+  <div class="user-success-backdrop" data-close="true"></div>
+
+  <div class="user-success-container" role="document">
+
+    <div class="user-success-check-container">
+      <svg
+        class="user-success-checkmark"
+        viewBox="0 0 52 52"
+        aria-hidden="true"
+      >
+        <circle
+          class="user-success-circle"
+          cx="26" cy="26" r="25"
+          fill="none"
+        />
+        <path
+          class="user-success-path"
+          fill="none"
+          d="M14 27 l10 10 l14 -14"
+        />
+      </svg>
+    </div>
+
+    <h2
+      id="user-success-title"
+      class="user-success-title"
+    >Cadastro Concluído!</h2>
+    <p class="user-success-message">
+      Obrigado por se registrar.
+    </p>
+  </div>
+</div>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+  <script>
+     const topBtn = document.getElementById("topBtn");
+    const scrollBtn = document.getElementById("scrollBtn");
+  const parallax3 = document.getElementById("typing-title");
+
+  window.addEventListener("scroll", () => {
+    const rect = parallax3.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Se a seção #parallax3 estiver visível na tela → esconde o botão
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      // Se #parallax3 estiver visível → esconde scrollBtn
+      scrollBtn.classList.add("hidden");
+      // E mostra o botão de voltar ao topo
+      topBtn.classList.add("visible");
+    } else {
+      scrollBtn.classList.remove("hidden");
+      topBtn.classList.remove("visible");
+    }
+  });
+    const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, {
+  threshold: 0,
+  rootMargin: '0px 0px -50% 0px'
+});
+
+document.querySelectorAll('.animate-left, .animate-right').forEach(el => {
+  observer.observe(el);
+});
+
+//Animação de Digitação //
+const text = "CRIE SUA CONTA AGORA! ";
+const typingElement = document.getElementById("typing-title");
+let index = 0;
+let typingTimeout;
+
+function typeWriter() {
+  if (index < text.length) {
+    typingElement.innerHTML += text.charAt(index);
+    index++;
+    typingTimeout = setTimeout(typeWriter, 60);
+  }
+}
+
+const typingObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      clearTimeout(typingTimeout);
+      index = 0;
+      typingElement.innerHTML = '';
+      typeWriter();
+    } else {
+      clearTimeout(typingTimeout);
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+typingObserver.observe(typingElement);
+//Fim da Animação de Digitação //
+window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 50);
+        })
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+  </script>
+  <script>
+    ;(function(){
+  const dialog   = document.getElementById('user-success-dialog');
+  const backdrop = dialog.querySelector('.user-success-backdrop');
+  let timerId    = null;
+
+  function showUserSuccessDialog() {
+    dialog.setAttribute('aria-hidden', 'false');
+
+    // dispara animações do SVG automaticamente
+    // agenda fechamento automático após 3 segundos
+    clearTimeout(timerId);
+    timerId = setTimeout(hideUserSuccessDialog, 3000);
+  }
+
+  function hideUserSuccessDialog() {
+    dialog.setAttribute('aria-hidden', 'true');
+    clearTimeout(timerId);
+  }
+
+  // expõe globalmente
+  window.showUserSuccessDialog = showUserSuccessDialog;
+})();
+
+  const input = document.getElementById('foto');
+  const fileNameDisplay = document.getElementById('file-name');
+
+  input.addEventListener('change', function () {
+    if (input.files.length > 0) {
+      fileNameDisplay.textContent = input.files[0].name;
+    } else {
+      fileNameDisplay.textContent = 'Nenhum arquivo selecionado';
+    }
+  });
+  </script>
+  
+</body>
+</html>
