@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NutriHealth - Agenda</title>
+  <!-- FullCalendar CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css"
+    rel="stylesheet"
+  />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="css/calendario.css">
+  <link rel="stylesheet" href="../css/personal-nav.css">
+
+  <link rel="stylesheet" href="../../pag-menu/css/home-navresponsive.css">
+</head>
+<body>
+  <nav>
+    <header class="topo">
+<a href="#" class="logo">NutriHealth</a>
+
+<div class="top-actions">
+<div class="menu-toggle" id="menu-toggle">☰</div>
+
+<!-- Login card versão MOBILE -->
+<div class="login-card login-mobile">
+  <div class="icon">
+    <i class="fa fa-user-circle" aria-hidden="true"></i>
+  </div>
+  <div class="login-info">
+    <h3>Logar</h3>
+    <p>Clique para acessar</p>
+  </div>
+</div>
+</div>
+
+<ul class="nav-links">
+<li><a href="../../pag-menu/home.html">Inicio</a></li>
+<li><a href="../personal.html">Personal</a></li>
+<li><a href="#">Portfolio</a></li>
+
+<!-- Login card versão DESKTOP -->
+<li class="login-desktop">
+ <div class="perfil-card">
+  <div class="icon" id="perfil-icon">
+    <i class="fa fa-user-md" aria-hidden="true"></i>
+  </div>
+
+  <div class="perfil-dropdown" id="perfil-dropdown">
+    <div class="perfil-info">
+      <h3 id="perfil-nome">Carregando...</h3>
+      <p id="perfil-tipo"></p>
+    </div>
+
+    <hr>
+
+    <a href="#" class="perfil-item"><i class="bi bi-person-circle"></i> Ver Perfil</a>
+    <a href="#" class="perfil-item"><i class="bi bi-gear"></i> Configurações</a>
+    <a href="pag-menu/home.html" class="perfil-item sair"><i class="bi bi-box-arrow-right"></i> Sair</a>
+  </div>
+</div>
+</li>
+</ul>
+</header>
+
+</nav>
+
+  <div class="fundo-main">
+    
+
+  <main>
+    <!-- Navegação mensal -->
+     <section class="out-calender">
+    <section class="calendar-header">
+      <button id="prev"><i class="bi bi-caret-left-fill"></i></button>
+      <h2 id="currentMonth"></h2>
+      <button id="next"><i class="bi bi-caret-right-fill"></i></button>
+    </section>
+  </section>
+<div class="sobre-main">
+<div class="calendar-wrapper">
+    <div id="calendar" class="fc fc-media-screen"></div>
+    </div>
+    <aside class="calendar-legend">
+    
+  <h5>Status:</h5>
+  <ul class="legend-group status">
+    <li><span class="legend-color confirmado"></span>Confirmado</li>
+    <li><span class="legend-color cancelado"></span>Cancelado</li>
+    <li><span class="legend-color finalizado"></span>Finalizado</li>
+  </ul>
+</aside>
+
+</div>
+
+
+    <!-- Modal para criar/editar eventos -->
+    <aside id="eventPanel" class="event-panel">
+      <div class="modal-content">
+        <header>
+          <h3 id="panelDate"></h3>
+          <button id="closePanel" class="closePanel">&times;</button>
+        </header>
+
+        <ul id="eventsList"></ul>
+
+        <div class="panel-actions">
+          <button id="addEventBtn" title="Criar novo agendamento"><i class="bi bi-plus-circle"></i>Novo Agendamento</button>
+        </div>
+
+        <form id="eventForm" class="hidden">
+          <label>
+            Nome do Cliente:
+            <input type="text" name="clientName" placeholder="Ex: Ana Silva" required />
+          </label>
+          <label>
+            Telefone:
+            <input type="tel" name="phone" id="phoneInput" placeholder="Ex: (14) 99999-9999" required/>
+          </label>
+          <label>
+            Horário:
+            <input type="time" name="time" required />
+          </label>
+          <label>
+            Descrição:
+            <input type="text" name="description" placeholder="Ex: Consulta nutricional" />
+          </label>
+          <button type="submit">Salvar</button>
+        </form>
+      </div>
+    </aside>
+    <!-- Modal de Edição Isolado -->
+<aside id="editModalOverlay" class="edit-modal-overlay">
+  <div class="edit-modal-container">
+    <header class="edit-modal-header">
+      <h3 class="edit-modal-title">Editar Agendamento</h3>
+      <button id="closeEditModal" class="edit-modal-close-btn">&times;</button>
+    </header>
+
+    <form id="editForm" class="edit-modal-form edit-modal-hidden">
+      <label class="edit-modal-label">
+        Nome do Cliente:
+        <input
+          type="text"
+          name="clientName"
+          required
+          class="edit-modal-input"
+        />
+      </label>
+
+      <label class="edit-modal-label">
+        Telefone:
+        <input
+          type="tel"
+          name="phone"
+          id="editPhoneInput"
+          class="edit-modal-input"
+          placeholder="(14) 99999-9999"
+        />
+      </label>
+
+      <label class="edit-modal-label">
+        Horário:
+        <input
+          type="time"
+          name="time"
+          required
+          class="edit-modal-input"
+        />
+      </label>
+
+      <label class="edit-modal-label">
+        Descrição:
+        <input
+          type="text"
+          name="description"
+          class="edit-modal-input"
+        />
+      </label>
+
+      <div class="edit-modal-actions">
+        <button
+          type="submit"
+          class="edit-modal-save-btn"
+          title="Salvar alterações"
+        >
+        <i class="bi bi-save"></i>
+          Atualizar dados
+        </button>
+        <button
+          type="button"
+          id="deleteEvent"
+          class="edit-modal-delete-btn"
+          title="Excluir agendamento"
+        >
+        <i class="bi bi-trash3"></i>
+        </button>
+        <button type="button" class="edit-modal-finalize-btn" title="Marcar como finalizado">
+          <i class="bi bi-calendar2-check"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</aside>
+<!-- Modal de Confirmação de Exclusão -->
+<aside id="confirmDeleteOverlay" class="confirm-overlay">
+  <div class="confirm-box">
+    <header class="confirm-header">
+      <h3 class="confirm-title">Excluir Agendamento</h3>
+      <button id="closeConfirmBtn" class="confirm-close-btn">&times;</button>
+    </header>
+    <div class="confirm-body">
+      <p>Tem certeza que deseja excluir este agendamento?<br>
+         Esta ação não pode ser desfeita.</p>
+    </div>
+    <footer class="confirm-actions">
+      <button id="confirmYesBtn" class="confirm-yes-btn">SIM</button>
+      <button id="confirmNoBtn"  class="confirm-no-btn">NÃO</button>
+    </footer>
+  </div>
+</aside>
+
+
+  <!-- Popover de detalhes do paciente -->
+<div id="eventPopover" class="event-popover hidden">
+  <div class="popover-content">
+    <h4 id="popoverName">Nome</h4>
+    <p><strong>Telefone:</strong> <span id="popoverPhone"></span></p>
+    <p><strong>Status:</strong> <span id="popoverStatus"></span></p>
+    <p><strong>Data:</strong> <span id="popoverDate"></span></p>
+    <p><strong>Horário:</strong> <span id="popoverTime"></span></p>
+  </div>
+</div>
+
+
+  </main>
+  </div>
+</div>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h2>Sobre o Projeto</h2>
+        <p>
+          Adicione aqui uma descrição do projeto, seus objetivos ou qualquer outra informação relevante.
+        </p>
+      </div>
+      <div class="footer-section">
+        <h2>Links Úteis</h2>
+        <ul>
+          <li><a href="#">Documentação</a></li>
+          <li><a href="#">GitHub</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+  
+      <div class="footer-section">
+        <h2>Fale Conosco</h2>
+          <div class="botao-rs instagram">
+              
+              <a href="#" title="Instagram">    
+                 <i class="bi bi-instagram"></i>
+                 <span>Instagram</span>
+              </a>
+          </div>
+          <div class="botao-rs email">
+              <a href="#" title="E-mail">
+                  <i class="bi bi-envelope"></i>
+                  <span>E-mail</span>
+              </a>
+          
+          </div>
+          <div class="botao-rs whatsapp">
+              
+              <a href="#" title="whatsApp">    
+                  <i class="bi bi-whatsapp"></i>
+                  <span>WhatsApp</span>
+              </a>
+          
+          </div>
+
+      </div>
+    </div>
+  
+    <div class="footer-bottom">
+      © 2025 NutriHealth. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <!-- FullCalendar JS + Português -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/pt-br.js"></script>
+  <script src="js/calendario.js"></script>
+  <script>
+    window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 100);
+        })
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+  </script>
+</body>
+</html>

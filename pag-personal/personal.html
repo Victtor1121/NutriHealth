@@ -1,0 +1,640 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/personal-nav.css">
+    <link rel="stylesheet" href="css/personal.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+/>
+
+    <title>NutriHealth - Personal</title>
+</head>
+<body>
+    <nav>
+        <header>
+  <a href="#" class="logo">NutriHealth</a>
+
+  <div class="top-actions">
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+
+    <!-- Login card versão MOBILE -->
+    <div class="login-card login-mobile">
+      <div class="icon">
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
+      </div>
+      <div class="login-info">
+        <h3>Logar</h3>
+        <p>Clique para acessar</p>
+      </div>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="../pag-menu/home.html">Inicio</a></li>
+    <li><a href="pag-calendario/calendario.html">Agenda</a></li>
+    <li><a href="../home.htm#typing-title">Nutricionista</a></li>
+
+    <!-- Login card versão DESKTOP -->
+    <li class="login-desktop">
+      <!-- Perfil do profissional -->
+<div class="perfil-card">
+  <div class="icon" id="perfil-icon">
+    <i class="fa fa-user-md" aria-hidden="true"></i>
+  </div>
+
+  <div class="perfil-dropdown" id="perfil-dropdown">
+    <div class="perfil-info">
+      <h3 id="perfil-nome">Carregando...</h3>
+      <p id="perfil-tipo"></p>
+    </div>
+
+    <hr>
+
+    <a href="#" class="perfil-item"><i class="bi bi-person-circle"></i> Ver Perfil</a>
+    <a href="#" class="perfil-item"><i class="bi bi-gear"></i> Configurações</a>
+    <a href="pag-menu/home.html" class="perfil-item sair"><i class="bi bi-box-arrow-right"></i> Sair</a>
+  </div>
+</div>
+
+
+
+    </li>
+  </ul>
+</header>
+
+    </nav>
+
+
+    <main>
+      <div class="blurn">
+    <div class="main-container">
+        <!-- Coluna da esquerda -->
+        <div class="patients-container">
+          <div class="search-bar">
+            <div class="search-input-wrapper">
+              <input type="text" id="searchInput" class="search-input" placeholder="Buscar paciente…" />
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" id="searchButton" class="bi bi-search search-icon" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+              </svg>
+            </div>
+          
+            <div class="dropdown">
+              <button
+                class="btn-outline dropdown-toggle filter-toggle"
+                aria-expanded="false"
+                type="button"
+              >
+              Filtrar
+              <i class="bi bi-caret-right"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <button class="dropdown-item" type="button" data-filter="active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16" >
+                      <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0"/>
+                      <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"/>
+                    </svg>
+                    Ativos
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item" type="button" data-filter="inactive">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16"  >
+                      <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+                    </svg> Inativos
+                  </button>
+                </li>
+                <li>
+                  <button class="dropdown-item" type="button" data-filter="all">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                    </svg>Todos
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+    
+          <div class="patient-card">
+            <div class="patient-info">
+              <div class="avatar">V</div>
+              <span>Victor</span>
+            </div>
+            <div class="patient-actions">
+              <button class="btn-outline">Abrir Ficha</button>
+              <div class="dropdown">
+                <button
+                  class="btn-outline dropdown-toggle"
+                  aria-expanded="false"
+                  type="button"
+                >
+                <i class="bi bi-caret-right"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <button class="dropdown-item" type="button">
+                      <i class="bi bi-pencil-square"></i> Editar
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item" type="button">
+                      <i class="bi bi-trash"></i> Remover
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              
+            </div>
+          </div>
+          <div class="empty-list hidden" id="patientsEmpty">
+            <h3>Lista vazia</h3>
+            <p>Atualmente não há pacientes para mostrar.</p>
+          </div>
+          
+          <button class="btn add-patient">Cadastrar Paciente +</button>
+        </div>
+    
+        <!-- Coluna da direita -->
+        <div class="sidebar">
+         <a href="pag-calendario/calendario.html"> 
+          <div class="card">
+            <h3><i class="bi bi-calendar"></i>Consultar Agenda</h3>
+            <p>Adicione e organize seus horários do dia.</p>
+          </div></a>
+          <div class="card" id="card-add-patient">
+            <h3><i class="bi bi-person-plus"></i>Cadastrar novo paciente</h3>
+            <p>Adicione mais pacientes para o seu consultório.</p>
+          </div>
+
+        </div>
+      </div>
+      </div>
+    </main>
+  
+    <!-- Overlay e Modal -->
+<div id="addPatientModalOverlay" class="modal-overlay hidden"></div>
+
+<div id="addPatientModal" class="modal hidden">
+  <div class="modal-header">
+    <h2><i class="bi bi-person-plus"></i> Cadastrar Paciente</h2>
+    
+  </div>
+  <form id="addPatientForm" class="modal-form">
+    <!-- Nome Completo -->
+    <div class="form-group">
+      <i class="bi bi-person"></i>
+      <input type="text" name="fullName" placeholder="Nome completo" />
+      <span class="error-message" id="fullName-error"></span>
+    </div>
+    
+
+    <div class="form-group">
+      <i class="bi bi-envelope"></i>
+      <input type="email" name="email" placeholder="E-mail" />
+      <span class="error-message" id="email-error"></span>
+    </div>
+    
+
+    <!-- Telefone -->
+    <div class="form-group">
+      <i class="bi bi-telephone"></i>
+      <input type="tel" name="phone" placeholder="(14) 99999-9999"/>
+      <span class="error-message" id="phone-error"></span>
+    </div>
+    
+    <!-- Endereço: CEP -->
+    <div class="form-group">
+      <i class="bi bi-geo-alt"></i>
+      <input type="text" name="cep" placeholder="CEP" maxlength="9" id="cep"/>
+      <span class="error-message" id="cep-error"></span>
+    </div>
+    
+
+    <!-- Endereço: Bairro -->
+    <div class="form-group">
+      <i class="bi bi-building"></i>
+      <input type="text" name="bairro" placeholder="Bairro" id="bairro"/>
+      <span class="error-message" id="bairro-error"></span>
+    </div>
+    
+
+    <!-- Endereço: Rua -->
+    <div class="form-group">
+      <i class="bi bi-map"></i>
+      <input type="text" name="rua" placeholder="Rua" id="rua"/>
+      <span class="error-message" id="rua-error"></span>
+    </div>
+    
+
+    <!-- Sexo (dropdown custom) -->
+    <div class="form-group sexo-field-autocomplete" id="sexoFieldWrapper">
+      <i class="bi bi-gender-ambiguous"></i>
+      <input
+        type="text"
+        id="sexoFieldText"
+        name="sexo_text"
+        placeholder="Sexo"
+        autocomplete="off"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+        aria-controls="sexoFieldList"
+        aria-autocomplete="list"
+      
+      />
+    
+      <input type="hidden" id="sexoFieldHidden" name="sexo" />
+      <ul id="sexoFieldList" class="sexo-field-suggestions" role="listbox" aria-label="Sugestões de sexo"></ul>
+      <span class="error-message" id="sexo-error"></span>
+    </div>
+    
+  
+    
+    
+
+    <!-- Botões -->
+    <div class="modal-actions">
+      <button type="submit" class="btn">Salvar</button>
+      <button type="button" class="btn btn-outline modal-cancel-btn">Cancelar</button>
+    </div>
+  </form>
+  
+</div>
+
+<!-- Edit Patient Modal -->
+<div id="editPatientModalOverlay" class="modal-overlay hidden"></div>
+
+<div id="editPatientModal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="editPatientTitle">
+  <div class="modal-header">
+    <h2 id="editPatientTitle"><i class="bi bi-pencil-square"></i> Editar Paciente</h2>
+  </div>
+
+  <form id="editPatientForm" class="modal-form">
+    <input type="hidden" id="editPatientIndex" name="index" />
+
+    <div class="form-group">
+      <i class="bi bi-person"></i>
+      <input type="text" id="editFullName" name="fullName" placeholder="Nome completo" />
+      <span class="error-message" id="editFullName-error"></span>
+    </div>
+
+    <div class="form-group">
+      <i class="bi bi-envelope"></i>
+      <input type="email" id="editEmail" name="email" placeholder="E-mail" />
+      <span class="error-message" id="editEmail-error"></span>
+    </div>
+
+    <div class="form-group">
+      <i class="bi bi-telephone"></i>
+      <input type="tel" id="editPhone" name="phone" placeholder="(14) 99999-9999" />
+      <span class="error-message" id="editPhone-error"></span>
+    </div>
+
+    <div class="form-group">
+      <i class="bi bi-geo-alt"></i>
+      <input type="text" id="editCep" name="cep" placeholder="CEP" />
+      <span class="error-message" id="editCep-error"></span>
+    </div>
+
+    <div class="form-group">
+      <i class="bi bi-building"></i>
+      <input type="text" id="editBairro" name="bairro" placeholder="Bairro" />
+      <span class="error-message" id="editBairro-error"></span>
+    </div>
+
+    <div class="form-group">
+      <i class="bi bi-map"></i>
+      <input type="text" id="editRua" name="rua" placeholder="Rua" />
+      <span class="error-message" id="editRua-error"></span>
+    </div>
+
+    <div class="form-group sexo-field-autocomplete" id="editSexoFieldWrapper">
+      <i class="bi bi-gender-ambiguous"></i>
+      <input type="text" id="editSexoFieldText" name="sexo_text" placeholder="Sexo" autocomplete="off" />
+      <input type="hidden" id="editSexoFieldHidden" name="sexo" />
+      <ul id="editSexoFieldList" class="sexo-field-suggestions" role="listbox" aria-label="Sugestões de sexo"></ul>
+      <span class="error-message" id="editSexo-error"></span>
+    </div>
+
+    <div class="modal-actions">
+      <button type="submit" class="btn">Salvar</button>
+      <button type="button" class="btn btn-outline modal-cancel-edit">Cancelar</button>
+    </div>
+  </form>
+</div>
+
+
+<div id="modal-confirmacao" class="modal hidden">
+    <div class="modal-content modal-confirm">
+      <h3>Tem certeza que deseja fechar?</h3>
+      <p>Os dados preenchidos serão perdidos.</p>
+      <div class="confirm-buttons">
+        <button class="btn-sim" onclick="confirmarFechamento(true)">Sim</button>
+        <button class="btn-nao" onclick="confirmarFechamento(false)">Não</button>
+      </div>
+    </div>
+  </div>
+
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h2>Sobre o Projeto</h2>
+          <p>
+            Adicione aqui uma descrição do projeto, seus objetivos ou qualquer outra informação relevante.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h2>Links Úteis</h2>
+          <ul>
+            <li><a href="#">Documentação</a></li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Contato</a></li>
+          </ul>
+        </div>
+    
+        <div class="footer-section">
+          <h2>Fale Conosco</h2>
+            <div class="botao-rs instagram">
+                
+                <a href="#" title="Instagram">    
+                  <i class="bi bi-instagram"></i>
+                  <span>Instagram</span>
+                </a>
+            </div>
+            <div class="botao-rs email">
+                <a href="#" title="E-mail">
+                    <i class="bi bi-envelope"></i>
+                    <span>E-mail</span>
+                </a>
+            
+            </div>
+            <div class="botao-rs whatsapp">
+                
+                <a href="#" title="whatsApp">    
+                    <i class="bi bi-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+            
+            </div>
+  
+        </div>
+      </div>
+    
+      <div class="footer-bottom">
+        © 2025 NutriHealth. Todos os direitos reservados.
+      </div>
+    </footer>
+
+<!-- Pacient Viewer Modal / Painel (arquivo: nutricionista.html) -->
+<div id="cp-patientOverlay" class="modal-overlay hidden"></div>
+
+<div id="cp-patientPanel" class="modal-cp hidden" role="dialog" aria-modal="true" aria-label="Ficha do paciente">
+  <div class="cp-panel">
+    <aside class="cp-sidebar">
+      <div class="cp-nav-item cp-active" data-section="dados"><i class="bi bi-person-circle"></i> Dados da paciente</div>
+      <div class="cp-nav-item" data-section="anamnese"><i class="bi bi-journal-text"></i> Anamnese</div>
+      <div class="cp-nav-item" data-section="gasto"><i class="bi bi-fire"></i> Gasto Calórico</div>
+      <div class="cp-nav-item" data-section="imc"><i class="bi bi-rulers"></i> IMC</div>
+      <div class="cp-nav-item" data-section="receitas"><i class="bi bi-basket3"></i> Receitas</div>
+      <div class="cp-nav-item" data-section="peso"><i class="bi bi-activity"></i> Controle de Peso</div>
+
+      <button id="cp-closePanel" class="btn cp-btn-close"><i class="bi bi-x-lg"></i></button>
+    </aside>
+
+    <section class="cp-content">
+      <header class="cp-header">
+        <div class="cp-title"><i class="bi bi-file-earmark-medical"></i> Ficha do paciente</div>
+        <div class="cp-subtitle" id="cp-subtitle">— carregando —</div>
+      </header>
+
+      <div class="cp-sections">
+        <!-- Dados da paciente -->
+        <div class="cp-section" id="cp-section-dados">
+          <div class="cp-card">
+            <h4>Dados do paciente</h4>
+            <!-- Status do paciente (Ativo / Inativo) -->
+<div class="cp-patient-status-row" style="margin-top:8px;">
+  <label class="cp-status-label">Status</label>
+  <div id="cp-statusControl" class="cp-status-control" role="switch" aria-checked="true" tabindex="0" data-state="true">
+    <span class="cp-status-dot"></span>
+    <span class="cp-status-text">Ativo</span>
+  </div>
+</div>
+
+            <div class="cp-grid">
+              <div><strong>Nome</strong><div id="cp-name">—</div></div>
+              <div><strong>E-mail</strong><div id="cp-email">—</div></div>
+              <div><strong>Telefone</strong><div id="cp-phone">—</div></div>
+              <div><strong>Endereço</strong><div id="cp-address">—</div></div>
+              <div><strong>Sexo</strong><div id="cp-sex">—</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anamnese -->
+        <div class="cp-section hidden" id="cp-section-anamnese">
+          <div class="cp-card">
+            <h4>Anamnese</h4>
+            <div class="cp-editor-toolbar">
+              <button data-cmd="bold" class="cp-tool-btn"><i class="bi bi-type-bold"></i></button>
+              <button data-cmd="italic" class="cp-tool-btn"><i class="bi bi-type-italic"></i></button>
+              <button data-cmd="underline" class="cp-tool-btn"><i class="bi bi-type-underline"></i></button>
+              <button id="cp-saveAnamnese" class="btn btn-outline">Salvar notas</button>
+            </div>
+            <div id="cp-anamneseEditor" class="cp-editor" contenteditable="true" aria-label="Editor de anamnese"></div>
+          </div>
+        </div>
+
+        <!-- Gasto Calórico -->
+        <div class="cp-section hidden" id="cp-section-gasto">
+          <div class="cp-card">
+            <h4>Estimativa de gasto calórico</h4>
+            <div class="cp-form-row">
+              <label>Peso (kg)</label><input id="cp-weight" type="number" min="1" />
+              <label>Altura (cm)</label><input id="cp-height" type="number" min="1" />
+              <label>Idade</label><input id="cp-age" type="number" min="1" />
+              <label>Atividade</label>
+              <select id="cp-activity">
+                <option value="1.2">Sedentário</option>
+                <option value="1.375">Leve</option>
+                <option value="1.55" selected>Moderado</option>
+                <option value="1.725">Intenso</option>
+                <option value="1.9">Muito intenso</option>
+              </select>
+            </div>
+            <div class="cp-results">
+              <div><strong>TMB (Mifflin-St Jeor)</strong><div id="cp-tmb">—</div></div>
+              <div><strong>Gasto diário estimado</strong><div id="cp-daily">—</div></div>
+            </div>
+            <button id="cp-calcGasto" class="btn">Calcular</button>
+          </div>
+        </div>
+
+        <!-- IMC -->
+        <div class="cp-section hidden" id="cp-section-imc">
+          <div class="cp-card">
+            <h4>IMC</h4>
+            <div class="cp-form-row">
+              <label>Peso (kg)</label><input id="cp-imc-weight" type="number" min="1" />
+              <label>Altura (cm)</label><input id="cp-imc-height" type="number" min="1" />
+            </div>
+            <div class="cp-grid">
+              <div><strong>IMC</strong><div id="cp-imc">—</div></div>
+              <div><strong>Classificação</strong><div id="cp-imcClass">—</div></div>
+            </div>
+            <button id="cp-calcImc" class="btn">Calcular IMC</button>
+          </div>
+        </div>
+
+        <!-- Receitas -->
+        <!-- ======== ABA DE RECEITAS ======== -->
+<div class="cp-section" id="cp-section-receitas">
+
+  <!-- Receitas Selecionadas (novo) -->
+<div class="cp-card" id="cp-selectedRecipesCard">
+  <h4>Receitas Selecionadas</h4>
+  <p class="receitas-subtitulo">Receitas atribuídas especificamente a este paciente.</p>
+
+  <div id="cp-selectedRecipes" class="cp-recipesList">
+    <!-- Será preenchido dinamicamente por renderSelectedRecipesFor(patient) -->
+  </div>
+</div>
+<div id="cp-selectedRecipes" class="cp-recipesList"></div>
+
+  <div class="receitas-container">
+    <h2>Receitas do Personal</h2>
+    <p class="receitas-subtitulo">Selecione uma receita existente ou cadastre uma nova.</p>
+
+    <!-- Grade de receitas existentes -->
+    <div class="grid-receitas" id="gridReceitas">
+      <!-- Os cards de receitas aparecerão aqui -->
+    </div>
+
+    <!-- Botão flutuante para adicionar nova -->
+    <button id="btnNovaReceita" class="botao-flutuante">+</button>
+  </div>
+
+  <!-- ======== MODAL NOVA RECEITA ======== -->
+  <div class="modal-bg" id="modalReceita">
+    <div class="modal-conteudo">
+      <span id="fecharModal" class="fechar">&times;</span>
+      <h2>Cadastrar Nova Receita</h2>
+
+      <form id="formReceita">
+        <div class="grid-receita">
+          <!-- Coluna Esquerda -->
+          <div class="coluna-esquerda">
+            <label for="nomePrato">Nome do prato:</label>
+            <input type="text" id="nomePrato" required>
+
+            <label>Ingredientes:</label>
+            <div id="listaIngredientes"></div>
+            <button type="button" id="btnAddIngrediente">+ Adicionar Ingrediente</button>
+            
+
+            <label for="modoPreparo">Modo de preparo:</label>
+            <textarea id="modoPreparo" rows="4"></textarea>
+          </div>
+
+          <!-- Coluna Direita -->
+          <div class="coluna-direita">
+            <label for="inputImagemPrato">Imagem do prato:</label>
+            <label for="inputImagemPrato" class="label-upload">Escolher imagem</label>
+            <p id="nomeArquivo" class="nome-arquivo">Nenhum arquivo escolhido</p>
+            <input type="file" id="inputImagemPrato" accept="image/*">
+            <img id="previewImagem" src="" alt="Prévia do prato" class="preview-imagem">
+
+            <label for="instrucoes">Instruções:</label>
+            <textarea id="instrucoes" placeholder="Escreva as instruções..."></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="botao-salvar">Salvar Receita</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Seção de Controle de Peso -->
+<div class="cp-section hidden" id="cp-section-peso">
+  <div class="cp-card">
+    <h4>Controle de Peso</h4>
+
+    <div class="cp-form-row" style="grid-template-columns: repeat(3, 1fr); gap:12px; margin-top:10px;">
+      <div>
+        <label for="cp-peso-valor">Peso (kg)</label>
+        <input id="cp-peso-valor" type="number" min="0" step="0.1" />
+      </div>
+      <div>
+        <label for="cp-peso-data">Data</label>
+        <input id="cp-peso-data" type="date" />
+      </div>
+      <div style="display:flex;align-items:end;">
+        <button id="cp-peso-add" class="btn" style="width:100%;">Adicionar registro</button>
+      </div>
+    </div>
+
+    <div style="margin-top:12px; display:flex; gap:12px; align-items:center;">
+      <div style="flex:1;">
+        <div id="cp-peso-chart" style="width:100%;height:220px;border-radius:8px;background:linear-gradient(180deg,#fbfff9,#f3fff2);padding:8px;box-sizing:border-box;"></div>
+      </div>
+      <div style="width:220px;">
+        <h5 style="margin:0 0 8px 0;color:#235a2b;">Registros</h5>
+        <div id="cp-peso-list" style="max-height:180px;overflow:auto;"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:12px; display:flex; gap:8px; justify-content:flex-end;">
+      <button id="cp-peso-clear" class="btn btn-outline">Limpar registros</button>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </section>
+  </div>
+</div>
+<!-- Recipe Detail Modal (TheMealDB) -->
+<!-- Recipe Detail Dialog (CP RCP namespace) -->
+<div id="cp-rcp-overlay" class="cp-rcp-overlay hidden" aria-hidden="true"></div>
+
+<div id="cp-rcp-dialog" class="cp-rcp-dialog hidden" role="dialog" aria-modal="true" aria-labelledby="cp-rcp-title">
+  <div class="cp-rcp-header">
+    <h2 id="cp-rcp-title"><i class="bi bi-journal-bookmark"></i> Receita</h2>
+    <button id="cp-rcp-close" class="cp-rcp-close-btn"><i class="bi bi-x-lg"></i></button>
+  </div>
+
+  <div class="cp-rcp-content" id="cp-rcp-content" style="max-width:820px;">
+    <div id="cp-rcp-body">
+      <div style="text-align:center;color:#666;padding:24px;">Carregando...</div>
+    </div>
+
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:18px;">
+      <button id="cp-rcp-select" class="btn btn-outline">Selecionar receita</button>
+      <button id="cp-rcp-close-btn" class="btn modal-cancel-btn">Fechar</button>
+    </div>
+  </div>
+</div>
+
+
+
+    <script src="personal.js"></script>
+    <script src="pv-viwer.js"></script>
+    <script>
+      window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 100);
+        })
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+
+    </script>
+</body>
+</html>
