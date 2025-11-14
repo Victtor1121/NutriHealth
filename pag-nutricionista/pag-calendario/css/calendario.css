@@ -1,0 +1,1355 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+    :root {
+  --color-primary:   #2ecc71;
+  --color-success:   #5cb85c;
+  --color-warning:   #f1c40f;
+  --color-danger:    #e74c3c;
+  --color-light:     #f9f9f9;
+  --color-dark:      #333;
+  --border-radius:   8px;
+  --spacing:         1rem;
+  --transition-fast: 0.2s;
+  --line-color: rgba(46, 204, 113, 0.6);
+  --cell-hover-bg: rgba(46, 204, 113, 0.1);
+}
+
+
+    /* Reset e base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 220vh;
+      background: #f5f7fa;
+      
+    }
+    .fundo-main{
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    .sobre-main{
+      background-color: white;
+      padding: 25px 25px 25px;
+      height: 525px auto;
+      border-radius: 15px;
+    }
+    /* Header */
+    .topo{
+      position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: 0.6s;
+        padding: 20px 10%;
+        z-index: 100;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  main{
+    margin-top: 10%;
+  }
+  .topo.sticky{
+      padding: 10px 5%;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  .topo .logo{
+      font-weight: 700;
+      color: #000;
+      text-decoration: none;
+      font-size: 1.8em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: 0.6s;
+  }
+  
+  .topo .logo img{
+      max-height: 100px;
+  }
+  .fc .fc-col-header-cell {
+  background-color: #53c583 !important;
+  color: white;
+}
+
+
+/* 2) Faz o calendário crescer e empurra a legenda à direita */
+#calendar {
+  flex: 1;
+}
+/* 1) Faz a lista .status ficar em linha */
+.calendar-legend .legend-group.status {
+  display: flex;
+  gap: 1rem;           /* espaço entre cada item */
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* 2) Remove espaçamento padrão dos <li> */
+.calendar-legend .legend-group.status li {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* evita quebra de linha dentro do item */
+}
+
+/* 3) Opcional: ajusta o quadradinho colorido */
+.calendar-legend .legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* 3) Estilo da legenda */
+.calendar-legend {
+  background: #7adab2;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+}
+
+.calendar-legend h4,
+.calendar-legend h5 {
+  margin-bottom: 10px;
+  color: var(--color-dark);
+  font-weight: 6000;
+  font-size: 15px;
+}
+@media(max-width: 900px){
+   main{
+    margin-top: 30%;
+   }
+}
+
+.calendar-legend .legend-group {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.calendar-legend .legend-group li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-legend .legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+#calendar .fc-daygrid-day-bg,
+#calendar .fc-daygrid-day-frame {
+  background: transparent;
+  box-shadow: none;
+}
+#calendar .fc-col-header-cell {
+  border-right: 1px dashed var(--line-color);
+  border-bottom: 1px dashed var(--line-color);
+  border-left: 1px dashed var(--line-color);
+}
+#calendar .fc-col-header-cell:last-child {
+  border-right: none;
+}
+
+/* corpo do calendário */
+#calendar .fc-daygrid-body .fc-daygrid-day .fc-daygrid-day-frame {
+  border-right: 1px dashed var(--line-color);
+  border-bottom: 1px dashed var(--line-color);
+  border-left: 1px dashed var(--line-color);
+  padding: 0.25rem;
+}
+
+/* eliminar última linha/coluna */
+#calendar .fc-daygrid-body .fc-daygrid-week:last-of-type 
+  .fc-daygrid-day .fc-daygrid-day-frame {
+  border-bottom: none;
+}
+
+#calendar .fc-daygrid-body .fc-daygrid-week 
+  .fc-daygrid-day:last-of-type .fc-daygrid-day-frame {
+  border-right: none;
+}
+#calendar .fc-daygrid-day:hover .fc-daygrid-day-frame {
+  background: var(--cell-hover-bg);
+  cursor: pointer;
+}
+#calendar .fc-daygrid-day-number {
+  color: var(--color-dark);
+}
+/* 4) Defina as cores que desejar */
+.legend-color.cs1          { background: #2ecc71; }
+.legend-color.cs2          { background: #27ae60; }
+.legend-color.cs3          { background: #1fa361; }
+.legend-color.cs4          { background: #16a34a; }
+
+.legend-color.presencial   { background: #2ecc71; }
+.legend-color.chat         { background: #f1c40f; }
+.legend-color.online       { background: #3498db; }
+
+.legend-color.confirmado   { background: #53fe53ff; }
+.legend-color.cancelado    { background: #e74c3c; }
+.legend-color.finalizado   { background: #3498db; }
+
+/* 5) Responsividade: legend abaixo do calendário em telas menores */
+@media (max-width: 900px) {
+  
+  .calendar-legend {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+  .topo ul{
+      display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+  }
+  .topo ul li{
+      position: relative;
+      list-style: none;
+  }
+  .topo ul li a{
+      text-decoration: none;
+      color: #000;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      position: relative;
+  }
+  .topo.sticky .logo,
+  .topo.sticky ul li a{
+      color: #000;
+  }
+  .topo ul li a::before,
+  .topo ul li a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0%;
+      height: 1px;
+      background-color: #000;
+      transition: width 0.35s ease-in-out;
+      opacity: 0;
+  }
+  
+  .topo ul li a::before {
+      top: 0;
+      height: 1px;
+  }
+  
+  .topo ul li a::after {
+      bottom: 0;
+  }
+  
+  .topo ul li a:hover {
+      letter-spacing: 3px;
+  }
+  
+  .topo ul li a:hover::before,
+  .topo ul li a:hover::after {
+      width: 120%;
+      opacity: 1;
+  }
+  .topo.sticky ul li a::before,
+  .topo.sticky ul li a::after {
+      background-color: #000;
+      height: 1.5px;
+  }
+  .topo.sticky ul li a::before {
+      top: 0;
+      height: 1.5px;
+  }
+    /* Esconde botão hamburguer no desktop */
+    .menu-toggle {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #000;
+        z-index: 10001;
+    }
+    
+  
+    .nav-links {
+        display: flex;
+      }
+      /* Padrão desktop */
+  .login-mobile {
+    display: none; /* Esconde versão mobile */
+  }
+  .login-desktop {
+    display: block; /* Mostra versão desktop */
+  }
+  
+  /* Mobile ou zoom */
+  @media (min-width: 1025px) {
+    .top-actions .login-card.login-mobile {
+      display: none;
+    }
+    .nav-links .login-desktop {
+      display: block;
+    }
+  }
+  
+  /* Mobile/zoom: mostra só o login do topo (top-actions) */
+  @media (max-width: 1024px) {
+    .top-actions .login-card.login-mobile {
+      display: flex; /* ou block, conforme layout */
+    }
+    .nav-links .login-desktop {
+      display: none;
+    }
+  }
+  
+  
+      /* Responsividade */
+      @media (max-width: 1024px) {
+         .top-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end; /* ou space-between, se quiser espaço */
+          gap: 30px;
+    }
+  
+    .top-actions .login-card {
+      display: flex; /* ou inline-flex, se preferir */
+    }
+          
+        .menu-toggle {
+          display: block;
+        }
+  
+        .btn-login {
+      padding: 12px 25px;
+      font-size: 1.2rem;
+    }
+  
+        .nav-links {
+          position: fixed;
+      top: 65px;
+      right: -100%;
+      width: 100%;
+      height: calc(100vh - 70px);
+      background: #fff;
+      flex-direction: column;
+      justify-content: flex-start;   /* começa do topo */
+      align-items: center;
+      gap: 30px;
+      overflow-y: auto;             /* permite scroll */
+      padding: 40px 0;              /* espaço no topo/baixo */
+      transition: right 0.3s ease-in-out;
+        }
+  
+        .nav-links.active {
+          right: 0;
+        }
+  
+        .nav-links li a {
+          font-size: 1.2rem;
+        }
+      }
+  
+      /* Ajuste extra para telas muito pequenas */
+      @media (max-width: 480px) {
+        .topo .logo {
+        font-size: 1.4em;
+        }
+  
+        .menu-toggle {
+          font-size: 1.8rem;
+        }
+  
+        .nav-links li a {
+          font-size: 1rem;
+        }
+      }/* Estilo do botão logar */
+  /* Container do botão logar */
+  /* Container do botão logar */
+  .login-card {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 10%;
+  }
+  
+  /* Ícone do usuário */
+  .login-card .icon {
+    width: 70px;
+    height: 91px;
+    background: #009e60;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+  }
+  
+  .login-card .icon .fa {
+    font-size: 36px;
+    color: #fff;
+    transition: .2s all;
+  }
+  
+  .login-card:hover .icon .fa{
+    transform: scale(1.1);
+  }
+  
+  /* Tooltip (agora faz parte do hover) */
+  .login-card .login-info {
+    position: absolute;
+    top: 70px; /* aparece abaixo do círculo */
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    text-align: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    width: max-content;
+    min-width: 120px;
+    z-index: 10;
+  }
+  
+  /* Exibir no hover */
+  .login-card:hover .login-info {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  /* Texto dentro do tooltip */
+  .login-card .login-info h3 {
+    margin: 0;
+    font-size: 15px;
+    color: #009e60;
+  }
+  
+  .login-card .login-info p {
+    margin: 3px 0 0;
+    font-size: 12px;
+    color: #555;
+  }
+
+    /* Navegação mensal */
+    .calendar-header {
+      max-width: 1200px;
+      margin: 0 auto var(--spacing);
+      display: flex;
+      
+      align-items: center;
+      gap: var(--spacing);
+      flex-wrap: wrap;
+}
+    .calendar-header button {
+      flex: none;
+      padding: 0.5rem;
+      background: var(--color-primary);
+      border-radius: 5px;
+      border: none;
+      color: var(--color-light);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      transition: background var(--transition-fast);
+      cursor: pointer;
+    }
+    .calendar-header button:hover {
+  background: #1fa361;
+}
+    #currentMonth { font-size: 1.2rem; }
+
+    /* Container do FullCalendar */
+    #calendar {
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+
+    /* Modal overlay */
+    .event-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(44, 44, 44, 0.15);
+      backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .event-panel.open {
+      display: flex;
+    }
+
+    /* Conteúdo do modal */
+    .event-panel .modal-content {
+      background: #fff;
+      width: 340px;
+      max-height: 80%;
+      overflow-y: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(250, 250, 250, 0.9);
+      display: flex;
+      flex-direction: column;
+      
+    }
+    .modal-content header {
+      background: #2ecc71;
+      color: #fff;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+    .modal-content header button {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Lista de eventos */
+    #eventsList {
+      display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  padding: var(--spacing);
+  margin: 0;
+  max-height: 300px; /* ou qualquer altura que funcione bem visualmente */
+  overflow-y: auto;
+    }
+    #eventsList li {
+      width: 100%;
+      border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing) 0.5rem;
+  border-bottom: 1px solid #eee;
+  background: transparent;   /* remove blocos de cor */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    #eventsList li:last-child {
+  border-bottom: none;
+}
+    #eventsList li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+#eventsList li span:first-child{
+  flex: 1;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+#eventsList li .fc-event-time,
+#eventsList li span:first-child {
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+#eventsList li .desc {
+  margin: 0.5rem 0;
+  color: #555;
+  font-size: 0.85rem;
+}
+/* Status */
+#eventsList li.agendado {
+  border-left: 4px solid var(--color-success);
+}
+
+#eventsList li.cancelado {
+  border-left: 4px solid var(--color-danger);
+  opacity: 0.7;
+}#eventsList li .actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;              /* espaço entre os botões */
+  justify-content: flex-end;/* alinha à direita dentro do li */
+}
+
+/* Estilo base dos botões de ação */
+.actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;          /* espaço interno top/bottom e left/right */
+  background: var(--color-light);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+/* Ícones um pouco maiores e centralizados */
+.actions button i {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* Hover suave: muda cor de fundo e eleva levemente */
+.actions button:hover {
+  background: #e0f2e9;
+  transform: translateY(-2px);
+}
+
+/* Cores específicas para cada tipo de ação */
+.actions .edit-btn i {
+  color: var(--color-primary);
+}
+
+.cancel-btn i.bi-check-circle {
+  color: var(--color-success);
+}
+
+/* ícone “ban” fica vermelho */
+.cancel-btn i.bi-ban {
+  color: var(--color-danger);
+}
+
+#eventsList li button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+#eventsList li button.edit-btn {
+  color: var(--color-primary);
+}
+
+#eventsList li button.delete-btn {
+  color: var(--color-danger);
+}
+
+#eventsList li button:hover {
+  transform: scale(1.1);
+}
+.panel-actions {
+  text-align: right;
+}
+
+.panel-actions #addEventBtn {
+  display: inline-flex;        /* flex para controlar espaçamento */
+  align-items: center;         /* ícone e texto no mesmo eixo */
+  justify-content: center;     /* centraliza conteúdo */
+  gap: 0.5rem;                 /* distância entre ícone e texto */
+  
+  padding: 0.75rem 1.25rem;    /* espaçamento interno top/bottom e left/right */
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.panel-actions #addEventBtn:hover {
+  background: #27ae60;
+  transform: translateY(-2px);
+}
+
+.panel-actions #addEventBtn i {
+  font-size: 1.2rem;           /* aumenta levemente o ícone */
+  line-height: 1;
+}
+    #eventsList li.agendado { border-color: #5cb85c; }
+    #eventsList li.cancelado { border-color: #d9534f; opacity: 0.6; }
+    #eventsList li .desc {
+      font-size: 0.85rem;
+      color: #555;
+      margin-left: 8px;
+      flex: 1;
+    }
+    @media (max-width: 599px) {
+  #eventsList {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 2 colunas em tablets */
+@media (min-width: 600px) and (max-width: 899px) {
+  #eventsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+#calendar .fc-daygrid-event .fc-event-time {
+      font-weight: bold;
+  color: #2c3e50;
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+/* 3 colunas em desktops */
+@media (min-width: 900px) {
+  #eventsList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+    #eventsList li button.cancel-btn {
+      background: none;
+      border: none;
+      color: #0056b3;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 4px;
+    }
+    #eventsList li.cancelado button.cancel-btn { color: #c00; }
+    
+
+/* Nome do cliente em cor mais suave */
+#calendar .fc-daygrid-event .fc-event-title {
+  font-weight: normal;
+  color: #555;
+  font-size: 0.8rem;
+}
+.fc .fc-daygrid-day-frame .fc-daygrid-day-events {
+  margin-top: auto !important;
+}
+.fc .fc-daygrid-day-frame .fc-daygrid-day-top {
+  margin-bottom: auto;
+}
+
+/* Mobile: texto mais compacto */
+@media (max-width: 600px) {
+  #calendar .fc-daygrid-event {
+    font-size: 0.75rem;
+    padding: 1px 1px;
+  }
+}
+    /* Ações do modal */
+    .panel-actions {
+      padding: 8px 16px;
+      text-align: center;
+      border-top: 1px solid #eee;
+    }
+    .panel-actions button#addEventBtn {
+      background: #2ecc71;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .panel-actions button#addEventBtn:hover {
+      background: #27ae60;
+    }
+
+    /* Formulário */
+    #eventForm {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid #eee;
+    }
+    #eventForm.hidden { display: none; }
+    #eventForm label {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.9rem;
+    }
+    #eventForm input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #eventForm button {
+      background: #2ecc71;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #eventForm button:hover {
+      background: #27ae60;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 12px;
+      background: #f5f5f5;
+      margin-top: auto;
+    }
+    /* Overlay */
+.edit-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.edit-modal-overlay.open {
+  display: flex;
+}
+
+/* Container do modal */
+.edit-modal-container {
+  background: #fff;
+  width: 360px;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.96);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.edit-modal-overlay.open .edit-modal-container {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Cabeçalho */
+.edit-modal-header {
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-modal-title {
+  margin: 0;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.edit-modal-close-btn {
+  background: none;
+  border: none;
+  color: red;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Formulário */
+.edit-modal-form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.edit-modal-hidden {
+  display: none;
+}
+
+.edit-modal-label {
+  font-size: 0.95rem;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-modal-input {
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  transition: .2s ease-in-out;
+}
+
+.edit-modal-input:focus {
+ border-color: #3B885C;
+  box-shadow: 0 0 6px rgba(59, 136, 92, 0.3);
+  outline: none;
+  transform: scale(1.05);
+  transition: .2s ease-in-out;
+}
+label input:focus{
+  border-color: #3B885C;
+  box-shadow: 0 0 6px rgba(59, 136, 92, 0.603);
+  outline: none;
+  transform: scale(1.05);
+  transition: .2s ease-in-out;
+}
+
+/* Botões de ação */
+.edit-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding: 16px 24px 24px;
+  justify-content: center;
+
+}
+
+.edit-modal-save-btn {
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 40px;
+  background: var(--color-success);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.edit-modal-save-btn i {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.edit-modal-save-btn:hover {
+  background: #27ae60;
+}
+
+.edit-modal-delete-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 
+    background 0.2s,
+    color 0.2s;
+}
+.edit-modal-delete-btn i {
+  line-height: 1;
+}
+
+.edit-modal-delete-btn:hover {
+  background: var(--color-danger);
+  color: #fff;
+}
+/* Overlay de confirmação */
+.confirm-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+}
+
+.confirm-overlay.open {
+  display: flex;
+}
+
+/* Box central */
+.confirm-box {
+  background: #fff;
+  border-radius: 8px;
+  width: 320px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  overflow: hidden;
+  animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* Cabeçalho */
+.confirm-header {
+  background: #e74c3c;
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.confirm-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.confirm-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Corpo da mensagem */
+.confirm-body {
+  padding: 16px;
+  font-size: 0.95rem;
+  color: #333;
+  text-align: center;
+}
+
+/* Ações */
+.confirm-actions {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+
+.confirm-actions button {
+  flex: 1;
+  padding: 12px 0;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+
+.confirm-yes-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+
+.confirm-yes-btn:hover {
+  background: #c0392b;
+}
+
+.confirm-no-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.confirm-no-btn:hover {
+  background: #ddd;
+}
+/* Habilita transição suave em todos os dias */
+#calendar .fc-daygrid-day {
+  transition: background-color 0.8s ease;
+}
+#calendar .fc-daygrid-event {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow: hidden;
+  padding: 1px 1px;
+  margin: 3px 0;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  background: #d5ffd5ad !important;
+  border: 2px solid #ffffff !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+@media (max-width: 600px) {
+  #calendar .fc-daygrid-event {
+    font-size: 0.75rem;
+    padding: 1px 3px;
+  }
+  #calendar .fc-daygrid-event .fc-event-time {
+    font-size: 0.8rem;
+  }
+  #calendar .fc-daygrid-event .fc-event-title {
+    font-size: 0.75rem;
+  }
+}
+/* Hover sobre o dia inteiro */
+#calendar .fc-daygrid-day:hover {
+  background-color: rgba(46, 204, 113, 0.15);
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0s;
+}
+
+
+/* Opcional: destaca o número do dia ao passar o mouse */
+#calendar .fc-daygrid-day:hover .fc-daygrid-day-number {
+  font-weight: bold;
+  color: #10b455ff;
+  transition: transform 0.2s ease-in-out;
+}
+#eventsList li .event-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+#eventsList li .event-time {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 2px 6px;
+  max-width: 50px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+#eventsList li .event-client {
+  font-weight: 600;
+  color: var(--color-dark);
+  flex: 1;
+}
+.out-calender{
+width: 100%;
+padding: 10px;
+justify-content: center;
+display: flex;
+}
+
+.footer {
+  background-color: #1a1a1a;
+  color: #d1d1d1;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  position: relative; /* garante que não “suba” na tela */
+  z-index: 1; /* abaixo do modal */
+}
+.modal-footer-text {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.modal-footer-text a {
+  color: #2ecc71;
+  text-decoration: none;
+  font-weight: 600;
+}
+.modal-footer-text a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+}
+/* Lista de eventos finalizados */
+#eventsList li.finalizado {
+  filter: grayscale(100%) blur(0.5px);
+  opacity: 0.6;
+  transform: scale(0.95);
+  transition: filter var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
+}
+#calendar .fc-daygrid-event[style*="#3498db"] {
+  border-left: 4px solid #3498db;
+}
+/* Popover de evento */
+.event-popover {
+  position: absolute;
+  z-index: 2000;
+  background: #fff;
+  border: 1px solid lightgrey ;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  padding: 16px;
+  width: 260px;
+  transition: opacity 0.3s ease;
+}
+
+.event-popover.hidden {
+  display: none;
+}
+
+.popover-content {
+  position: relative;
+}
+
+.popover-content h4 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #2ecc71;
+}
+
+.popover-content p {
+  margin: 6px 0;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.close-popover {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+}
+
+
+#eventsList li.finalizado {
+  filter: grayscale(100%) blur(0.5px);
+  opacity: 0.6;
+  transform: scale(0.9);
+  font-size: 0.8rem; /* opcionalmente diminuir um pouco a fonte */
+  transition: filter var(--transition-fast),
+              transform var(--transition-fast),
+              opacity var(--transition-fast);
+}
+.edit-modal-finalize-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 16px;
+  background: var(--color-primary);
+  color: #3498db;
+  border: 1px solid #3498db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  background-color: transparent;
+}
+
+.edit-modal-finalize-btn i {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.edit-modal-finalize-btn:hover {
+  background: #3498db;
+  color: white;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: space-between;
+  }
+  .footer-section {
+    flex: 1 1 250px;
+  }
+  
+  .footer-section h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #ffffff;
+  }
+  
+  .footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section a {
+    color: #d1d1d1;
+    
+    transition: color 0.3s;
+  }
+  
+  .footer-section a:hover {
+    color: #ffffff;
+  }
+  .botao-rs{
+    padding:1em;
+    border-radius:100vw;
+    display:inline-flex;
+    margin:0.5em;
+    color:#ffffff;
+    width:auto;
+}
+.botao-rs a { 
+    text-decoration:none; 
+    color:#fff; 
+    display: inherit;
+}
+.instagram{   
+  background:hsl(0 0% 10%);
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+.whatsapp{
+  background:#15cc31;
+}
+.email{
+  background:#e60023;
+}
+.botao-rs:hover{
+  cursor:pointer;
+}
+.botao-rs i { 
+    width: 25px;
+    height: 25px;
+    line-height: 31px;
+    font-size: 1.5em;
+}
+.botao-rs span{
+  display:inline-block;
+  white-space: nowrap;
+  width:0px;
+
+  overflow:hidden;
+  transition:350ms ease;
+  
+}
+.botao-rs:hover span{
+  width:80px;
+  margin-left: 10px;
+}
+  .footer-bottom {
+    width: 100%;
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+
+  /* 2) Centraliza o conteúdo em um flex container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* 3) Mantém a tipografia original */
+  font-size: 13px;
+  color: #888;
+  }
